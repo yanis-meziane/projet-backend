@@ -2,6 +2,7 @@
 namespace App\Controller;
 
 use App\Entity\LivresCreation;
+use App\Entity\Auteurs;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
@@ -19,7 +20,7 @@ class bibliothèqueController extends AbstractController
         ]);
     }
 
-    #[Route('/create', name:'createBook')]
+    #[Route('/create/book', name:'createBook')]
     public function creationBook(EntityManagerInterface $entityManager): Response
     {
         $livre = new LivresCreation();
@@ -35,4 +36,19 @@ class bibliothèqueController extends AbstractController
             'livre' => $livre
         ]);
     }
-}
+    #[Route('/create/authors', name:'createAuthors')]
+        public function creationAuthors(EntityManagerInterface $entityManager): Response{
+            $authors = new Auteurs();
+            $authors = setNom("Rowling");
+            $authors = setPrenom("JK");
+            $authors = setBiographie("Petite biographie");
+            $authors = setDateNaissance("31/07/1965");
+
+            $entityManager->persist($authors);
+            $entityManager->flush();
+
+            return $this->render('auteurs/auteurs.html.twig', [
+            'authors' => $authors]);
+
+        }
+    }
