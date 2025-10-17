@@ -2,11 +2,11 @@
 
 namespace App\Entity;
 
-use App\Repository\UtilisateursRepository;
+use App\Repository\UsersRepository;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: UtilisateursRepository::class)]
-class Utilisateurs
+#[ORM\Entity(repositoryClass: UsersRepository::class)]
+class Users
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -15,6 +15,9 @@ class Utilisateurs
 
     #[ORM\Column(length: 50)]
     private ?string $nom = null;
+
+    #[ORM\Column(length: 50)]
+    private ?string $prenom = null;
 
     public function getId(): ?int
     {
@@ -29,6 +32,18 @@ class Utilisateurs
     public function setNom(string $nom): static
     {
         $this->nom = $nom;
+
+        return $this;
+    }
+
+    public function getPrenom(): ?string
+    {
+        return $this->prenom;
+    }
+
+    public function setPrenom(string $prenom): static
+    {
+        $this->prenom = $prenom;
 
         return $this;
     }
