@@ -1,5 +1,5 @@
 <?php
-
+/*
 namespace App\Controller;
 
 use App\Entity\Livre;
@@ -246,4 +246,4 @@ class LivreApiController extends AbstractController
             return $this->json(['error' => 'Erreur serveur'], Response::HTTP_INTERNAL_SERVER_ERROR);
         }
     }
-}
+}*/

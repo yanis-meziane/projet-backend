@@ -16,3 +16,7 @@
 			-> cd htdocs 
 			-> cd projet-backend
 			-> symfony server:start 
+
+## Commentaires 
+
+	-> Essaie de création JSON mais non réussie et non abouti
